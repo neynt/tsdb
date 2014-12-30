@@ -1,0 +1,15 @@
+{% extends "tsdb/base.html" %}
+{% block content %}
+
+<h2>{{ translation.title }}</h2>
+
+<p>A translation of <a href="{% url 'song' song.id %}">{{ song.title }}</a></p>
+
+<table>
+  {% for trans_line in lines %}
+  <tr>
+    <td>{{ trans_line }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

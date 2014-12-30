@@ -1,0 +1,13 @@
+{% extends "tsdb/base.html" %}
+{% block content %}
+Songs:
+{% if songs %}
+  <ul>
+  {% for song in songs %}
+    <li><a href="{% url 'song' song.id %}">{{ song.title }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No songs.</p>
+{% endif %}
+{% endblock %}

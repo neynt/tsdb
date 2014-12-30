@@ -1,0 +1,16 @@
+{% extends "tsdb/base.html" %}
+{% block content %}
+
+<table class="dual">
+  <tr>
+    <th>{{ song.title }}</th>
+    <th>{{ translation.title }}</th>
+  </tr>
+  {% for orig_line, trans_line in lines %}
+  <tr>
+    <td>{{ orig_line }}&nbsp;</td>
+    <td>{{ trans_line }}&nbsp;</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "tsdb/base.html" %}
+{% block content %}
+
+<h2>{{ song.title }}</h2>
+
+<p>By {{ song.artist.name }}</p>
+
+<table>
+  {% for line in lines %}
+  <tr>
+    <td>{{ line }}&nbsp;</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

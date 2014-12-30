@@ -1,0 +1,22 @@
+body {
+  background: #fcfcfc;
+  font-family: 'Crimson Text', serif;
+  font-size: 24px;
+}
+
+div.content {
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td {
+  padding: 4px 5px;
+  vertical-align: top;
+  text-align: left;
+}
+table.dual td:first-child {
+  text-align: right;
+}

@@ -9,8 +9,15 @@
   <title>tsdb</title>
 </head>
 <body>
+  <div class="top">
+    <div class="wrap">
+      <h1><a href="{% url 'tsdb:index' %}">translated song database (tsdb)</a></h1>
+    </div>
+  </div>
   <div class="content">
-  {% block content %}
-  {% endblock %}
+    <div class="wrap">
+      {% block content %}
+      {% endblock %}
+    </div>
   </div>
 </body>

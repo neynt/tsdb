@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     # e.g. /t/69
     url(r'^t/(?P<translation_id>\d+)$', views.translation, name='translation'),
     # e.g. /ts/69
-    url(r'^ts/(?P<translation_id>\d+)$', views.song_and_translation, name='song and translation'),
+    url(r'^ts/(?P<translation_id>\d+)$', views.song_and_translation, name='song_and_translation'),
 )

@@ -1,15 +1,27 @@
 {% extends "tsdb/base.html" %}
 {% block content %}
 
+{{ song_video | safe }}
+
 <table class="dual">
   <tr>
-    <th>{{ song.title }}</th>
-    <th>{{ translation.title }}</th>
+    <td>
+      <h2><a href="{% url 'tsdb:song' song.id %}">{{ song.title }}</a></h2>
+      <h3>by {{ song.artist.name }}</h3>
+    </td>
+    <td>
+      <h2><a href="{% url 'tsdb:translation' translation.id %}">{{ translation.title }}</a></h2>
+      <h3>translated by {{ translation.translator }}</h3>
+    </td>
+  </tr>
+  <tr> {# There might be a more elegant way to add the space. #}
+    <td></td>
+    <td></td>
   </tr>
   {% for orig_line, trans_line in lines %}
   <tr>
-    <td>{{ orig_line }}&nbsp;</td>
-    <td>{{ trans_line }}&nbsp;</td>
+    <td>{{ orig_line }}</td>
+    <td>{{ trans_line }}</td>
   </tr>
   {% endfor %}
 </table>

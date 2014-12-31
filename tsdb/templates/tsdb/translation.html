@@ -1,14 +1,17 @@
 {% extends "tsdb/base.html" %}
 {% block content %}
 
-<h2>{{ translation.title }}</h2>
+{{ song_video | safe }}
 
-<p>A translation of <a href="{% url 'song' song.id %}">{{ song.title }}</a></p>
+<h2>{{ translation.title }}</h2>
+<h3>translated by {{ translation.translator }}</h3>
+<p>Original: <a href="{% url 'tsdb:song' song.id %}">{{ song.title }}</a> (<a href="{% url 'tsdb:song_and_translation' translation.id %}">side by side</a>)</p>
 
 <table>
-  {% for trans_line in lines %}
+  <tr><td></td></tr>
+  {% for line in lines %}
   <tr>
-    <td>{{ trans_line }}</td>
+    <td>{{ line }}</td>
   </tr>
   {% endfor %}
 </table>

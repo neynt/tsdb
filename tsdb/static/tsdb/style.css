@@ -1,11 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: #fcfcfc;
   font-family: 'Crimson Text', serif;
-  font-size: 24px;
+  font-size: 18px;
+  overflow-y: scroll;
 }
 
-div.content {
+div.wrap {
   text-align: center;
+  margin: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+a {
+  color: #c00;
+  text-decoration: none;
+  outline: 0;
+}
+a:hover {
+  color: #f24;
 }
 
 table {
@@ -13,7 +33,7 @@ table {
 }
 
 td {
-  padding: 4px 5px;
+  padding: 6px 12px;
   vertical-align: top;
   text-align: left;
 }

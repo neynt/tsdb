@@ -1,0 +1,33 @@
+{% extends "tsdb/base.html" %}
+{% block content %}
+<h2>Submit a translation for {{ song.title }}</h2>
+<form action="{% url 'tsdb:submit_translation_action' song.id %}" method="post" id='form'>
+  {% csrf_token %}
+  <input type="text" name="title" placeholder="Translated title">
+  <br>
+  <input type="text" name="translator" placeholder="Translator">
+  <br>
+  <input type="text" name="video_url" placeholder="Link to translated video (optional)">
+  <br>
+  <input type="hidden" name="lyrics" id="lyrics">
+  <table class="dual" id="lines">
+    {% for line in lines %}
+    <tr>
+      <td>{{ line }}</td>
+      <td><textarea></textarea></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+<button onclick="submit_form()">Submit!</button>
+<script>
+function submit_form() {
+  var lines = [];
+  $('#lines textarea').each(function (i, textarea) {
+    lines.push(textarea.value);
+  });
+  $('#lyrics').val(lines.join('\n'));
+  $('#form').submit();
+}
+</script>
+{% endblock %}

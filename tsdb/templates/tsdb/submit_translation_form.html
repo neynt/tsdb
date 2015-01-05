@@ -22,6 +22,7 @@
 <button onclick="submit_form()">Submit!</button>
 <script>
 function submit_form() {
+  // Collect the lines from each textarea for POSTing.
   var lines = [];
   $('#lines textarea').each(function (i, textarea) {
     lines.push(textarea.value);
@@ -29,5 +30,39 @@ function submit_form() {
   $('#lyrics').val(lines.join('\n'));
   $('#form').submit();
 }
+function content_changed(textarea) {
+  var n = textarea.val().indexOf("\n");
+  if (n != -1) {
+    var old_text = textarea.val();
+    textarea.val(old_text.slice(0, n));
+
+    var prev_text = old_text.slice(n+1);
+    var nextrows = textarea.parent().parent().nextAll();
+    if (nextrows.length == 0) {
+      // This is the last textarea.
+      textarea.val(textarea.val() + prev_text);
+      return;
+    }
+    var nextareas = nextrows.find('textarea');
+    for (var i=0; i<nextareas.length-1; i++) {
+      var nextarea = nextareas[i];
+      var temp = prev_text;
+      prev_text = nextarea.value;
+      nextarea.value = temp;
+    }
+    // For the last text area, prepend the previous text
+    last_text = nextareas[nextareas.length-1];
+    last_text.value = prev_text + " " + last_text.value;
+    last_text.value = last_text.value.trim();
+    nextareas[0].focus();
+  }
+}
+$(document).ready(function () {
+  $('#lines textarea').each(function (i, textarea) {
+    $(textarea).on('change keyup paste', function() {
+      content_changed($(textarea));
+    });
+  });
+});
 </script>
 {% endblock %}

@@ -8,8 +8,7 @@
 <p>
 Translations:
 {% for trans in translations %}
-<a href="{% url 'tsdb:translation' trans.id %}">{{ trans.translator }}</a>
-(<a href="{% url 'tsdb:song_and_translation' trans.id %}">side by side</a>)
+<a href="{% url 'tsdb:song_and_translation' trans.id %}">{{ trans.translator }}</a>
 {% endfor %}
 </p>
 

@@ -3,14 +3,15 @@
 <h2>Songs</h2>
 {% if songs %}
   {% for song in songs %}
-    <h3>
-      <a href="{% url 'tsdb:song' song.id %}">{{ song.title }}</a> by {{ song.artist }}
-    </h3>
+  <div class='song'>
+    <h3><a href="{% url 'tsdb:song' song.id %}">{{ song.title }}</a></h3>
+    <h4>{{ song.artist }}</h4>
+  </div>
   {% endfor %}
 {% else %}
   <p>No songs.</p>
 {% endif %}
 
-<h2><a href="{% url 'tsdb:submit_song_form' %}">Submit a song</a></h2>
+<h2><a class='actiony' href="{% url 'tsdb:submit_song_form' %}">Submit a song</a></h2>
 
 {% endblock %}

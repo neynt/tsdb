@@ -32,7 +32,7 @@ function submit_form() {
 }
 function content_changed(textarea) {
   var n = textarea.val().indexOf("\n");
-  if (n != -1) {
+  if (n != -1) { // User typed newline. Break the lines.
     var old_text = textarea.val();
     textarea.val(old_text.slice(0, n));
 
@@ -55,6 +55,7 @@ function content_changed(textarea) {
     last_text.value = prev_text + " " + last_text.value;
     last_text.value = last_text.value.trim();
     nextareas[0].focus();
+    content_changed($(nextareas[0]));
   }
 }
 $(document).ready(function () {

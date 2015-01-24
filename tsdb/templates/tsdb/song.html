@@ -11,6 +11,9 @@ Translations:
 <a href="{% url 'tsdb:song_and_translation' trans.id %}">{{ trans.translator }}</a>
 {% endfor %}
 </p>
+<p>
+(<a href="{% url 'tsdb:submit_translation_form' song.id %}">submit translation</a>)
+</p>
 
 <table>
   <tr><td></td></tr>
